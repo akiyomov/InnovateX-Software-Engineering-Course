@@ -4,7 +4,7 @@ from django.shortcuts import render
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .serializers import ChatSerializer
+from .serializers import ChatSerializer,TextSerializer
 import openai
 from django.conf import settings
 
