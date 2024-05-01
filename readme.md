@@ -58,7 +58,7 @@ python manage.py migrate
 To start the Django server, run:
 
 ```
-python manage.py runserver
+python manage.py runserver 0.0.0.0:3005
 ```
 
 ## Usage
@@ -69,7 +69,36 @@ Example POST Request
 Using curl:
 
 ```bash
-curl -X POST http://localhost:8000/api/chat/ \
+curl -X POST http://localhost:3005/api/chat/ \
      -H "Content-Type: application/json" \
      -d '{"message": "Hello"}'
 ```
+
+```bash
+curl -X POST http://localhost:3005/api/translate/ \
+     -H "Content-Type: application/json" \
+     -d '{"message": "Translate this text to french: The quick brown fox jumps over the lazy dog"}'
+```
+
+
+```bash
+curl -X POST http://localhost:3005/api/paraphrase/ \
+     -H "Content-Type: application/json" \
+     -d '{"message": "Translate this text to french: The quick brown fox jumps over the lazy dog"}'
+```
+
+```bash
+curl -X POST http://localhost:3005/api/grammar-check/ \
+     -H "Content-Type: application/json" \
+     -d '{"text": "Correct grammar on this text: The cat lays on the sofa, while it's owner watches television"}'
+```
+
+Using direcly Django Resr Framework UI
+
+`http://0.0.0.0:3005/api/chat/`
+
+`http://0.0.0.0:3005/api/translate/`
+
+`http://0.0.0.0:3005/api/grammar-check/`
+
+`http://0.0.0.0:3005/api/praphrase/`
