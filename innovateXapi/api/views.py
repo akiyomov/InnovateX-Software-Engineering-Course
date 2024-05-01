@@ -27,6 +27,24 @@ class ChatView(APIView):
         return Response(serializer.errors, status=400)
 
 
+class TranslateView(APIView):
+    def post(self, request):
+        serializer = ChatSerializer(data=request.data)
+        if serializer.is_valid():
+            user_message = serializer.validated_data['message']
+            response = openai.ChatCompletion.create(
+                model="gpt-4",
+                messages=[
+                    {"role":"system","content":system},
+                    {"role": "user", "content": user_message}
+                    ]
+            )
+            return Response({'reply': response['choices'][0]['message']['content']})
+        else:
+            print("Serializer errors:", serializer.errors) 
+        return Response(serializer.errors, status=400)
+    
+system = "You are helpful assisstant to translate any text that required from user with asked language"
 
 class ParaphraseView(APIView):
     def post(self, request):
