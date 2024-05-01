@@ -62,5 +62,30 @@ class ParaphraseView(APIView):
             )
             return Response({'reply': response['choices'][0]['message']['content']})
         else:
-            print("Serializer errors:", serializer.errors)  # Debugging line
+            print("Serializer errors:", serializer.errors)  
         return Response(serializer.errors, status=400)
+
+class GrammarCheckView(APIView):
+    def post(self, request):
+        serializer = TextSerializer(data=request.data)
+        if serializer.is_valid():
+            text_to_check = serializer.validated_data['text']
+            response = self.check_grammar_with_gpt4(text_to_check)
+            return Response(response)
+        else:
+            print("Serializer errors:", serializer.errors) 
+        return Response(serializer.errors, status=400)
+
+    def check_grammar_with_gpt4(self, text):
+        response = openai.ChatCompletion.create(
+            model="gpt-4", 
+            messages=[
+                {"role": "system", "content": "You are a helpful assistant tasked with checking and correcting grammar."},
+                {"role": "user", "content": text},
+                {"role": "assistant", "content": ""},
+            ],
+            response_format="json"
+        )
+        json_response = json.loads(response.choices[0].message['content'])
+        json_en = {"en": json_response}
+        return json_en
