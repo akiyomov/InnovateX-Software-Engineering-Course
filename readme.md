@@ -84,13 +84,13 @@ curl -X POST http://localhost:3005/api/translate/ \
 ```bash
 curl -X POST http://localhost:3005/api/paraphrase/ \
      -H "Content-Type: application/json" \
-     -d '{"message": "Translate this text to french: The quick brown fox jumps over the lazy dog"}'
+     -d '{"message": "Paraphrase this text: The quick brown fox jumps over the lazy dog"}'
 ```
 
 ```bash
 curl -X POST http://localhost:3005/api/grammar-check/ \
      -H "Content-Type: application/json" \
-     -d '{"text": "Correct grammar on this text: The cat lays on the sofa, while it's owner watches television"}'
+     -d "{\"text\": \"Correct grammar on this text: The cat lays on the sofa, while it's owner watches television\"}"
 ```
 
 Using direcly Django Resr Framework UI
@@ -102,3 +102,11 @@ Using direcly Django Resr Framework UI
 `http://0.0.0.0:3005/api/grammar-check/`
 
 `http://0.0.0.0:3005/api/praphrase/`
+
+
+
+
+
+demo link
+
+[Link](https://drive.google.com/file/d/1ABN3XJ8utuApAnx_z2K2xdrIsgefjWFS/view?usp=sharing)
