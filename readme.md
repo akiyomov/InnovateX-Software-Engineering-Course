@@ -109,4 +109,4 @@ Using direcly Django Resr Framework UI
 
 demo link
 
-[Link](https://drive.google.com/file/d/1ABN3XJ8utuApAnx_z2K2xdrIsgefjWFS/view?usp=sharing)
+[Link](https://drive.google.com/file/d/1T58zccsiMI6FM4JuYhY-yNgUmMVsrLJB/view?usp=sharing)
